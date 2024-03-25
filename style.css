@@ -1,0 +1,333 @@
+:root {
+    --backdrop-color: #fffee7ed;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #07003c;
+}
+
+.card {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: .5rem .5rem .5rem .7rem;
+    border-radius: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.074);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2px );
+    -webkit-backdrop-filter: blur( 2px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+
+#city-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+}
+
+input {
+    font-family: monospace;
+    background: #0f036600;
+    border: none;
+    border-bottom: 1px solid rgba( 255, 255, 255, 0.18 );
+    
+}
+
+input {
+    padding: 0.3rem 0.6rem;
+}
+
+input::placeholder {
+    color: rgb(255, 255, 255);
+    opacity: 1; 
+  }
+  
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+    color: rgb(255, 255, 255);
+    background: #0f036600;
+    border-radius: 4px;
+    border: none;
+    
+}
+
+button:hover {
+    transform: scale(0.95);
+}
+
+#star-canvas {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.card-two {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: .5rem .5rem .5rem .7rem;
+    border-radius: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2px );
+    -webkit-backdrop-filter: blur( 2px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+p {
+
+    line-height: 0.8;
+  
+    font-weight: 100;
+  
+    text-align: start;
+  
+    font-family: var(--header-font);
+  
+    font-size: 1rem;
+  
+    color: #ffffff;
+  
+    letter-spacing: 0.2rem;
+  
+  }
+  
+  
+  
+  
+  
+  label {
+  
+   color: #ffffff;
+  
+  }
+  
+   
+  
+
+  
+   
+  
+    #sky {
+  
+      position: absolute;
+  
+      width: 100%;
+  
+      height: 100%;
+  
+      background: #2b0c3f;
+  
+      z-index: -100;
+  
+      right: 0%;
+  
+    }
+  
+   
+  
+    .star {
+  
+      position: absolute;
+  
+      background: #fff;
+  
+      border-radius: 100%;
+  
+      animation: twinkle infinite;
+  
+    }
+  
+   
+  
+    @keyframes twinkle {
+  
+      0%, 100% {
+  
+        opacity: 1;
+  
+      }
+  
+      50% {
+  
+        opacity: 0;
+  
+      }
+  
+    }
+  
+   
+  
+  
+   
+  
+  
+  
+   
+  
+  .slider {
+  
+    display: flex;
+  
+    align-items: flex-start;
+  
+    justify-content: center;
+  
+    gap: 0.5rem;
+  
+    flex-direction: column;
+  
+    width: 100%;
+  
+  }
+  
+   
+  
+  #speedSlider,
+  
+  #earthSpeedSlider {
+  
+    background-color: #ffffff00;
+  
+    border: none;
+  
+  }
+  
+   
+  
+  input[type="range"] {
+  
+    -webkit-appearance: none;
+  
+    appearance: none;
+  
+    background: transparent;
+  
+    cursor: pointer;
+  
+    width: 15rem;
+  
+  }
+  
+   
+  
+  input[type="range"]::-webkit-slider-runnable-track {
+  
+    height: 1px;
+  
+    background: #ffffff80;
+  
+  }
+  
+   
+  
+  input[type="range"]::-moz-range-track {
+  
+    height: 1px;
+  
+    background: #ffffff80;
+  
+  }
+  
+   
+  
+  input[type="range"]::-ms-track {
+  
+    height: 1px;
+  
+    background: #ffffff80;
+  
+  }
+  
+   
+  
+  input[type="range"]::-webkit-slider-thumb {
+  
+    -webkit-appearance: none;
+  
+    width: 20px;
+  
+    height: 20px;
+  
+    background: #e00074;
+  
+    border-radius: 50%;
+  
+    cursor: pointer;
+  
+    transform: translate(0, -50%);
+  
+    border: 1px solid #e00074;
+  
+  }
+  
+   
+  
+  input[type="range"]::-moz-range-thumb {
+  
+    width: 20px;
+  
+    height: 20px;
+  
+    background: #e00074;
+  
+    border-radius: 50%;
+  
+    cursor: pointer;
+  
+    border: 1px solid #ff8ac6;
+  
+  }
+  
+   
+  
+  input[type="range"]::-ms-thumb {
+  
+    width: 20px;
+  
+    height: 20px;
+  
+    background: #e00074;
+  
+    border-radius: 50%;
+  
+    cursor: pointer;
+  
+    border: 1px solid #ff8ac6;
+  
+  }
+  
+   
+  
+  input[type="range"]::-moz-focus-outer {
+  
+    border: none;
+  
+  }
+  
+   
+  
+ 
