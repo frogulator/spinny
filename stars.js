@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 const stars = [];
 const numberOfStars = 500;
 
-let twinkleFactor = 1.5; // Control this with the slider
+let twinkleFactor = 1.5; 
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
