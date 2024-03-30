@@ -18,22 +18,93 @@ body {
     background-color: #02000e;
 }
 
-header {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-}
 
-.top {
-    width: 100%;
+
+/* .top {
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    right: 1vw;
+    width: 98vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: #fff 1px solid;
+    border-bottom: #ffffff32 1px solid;
+    border-radius: 5px;
+    background-color: #7137aa;
+    backdrop-filter: blur(3px);
+} */
+
+
+.top {
+    position: absolute;
+    width: 96vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5vw 2vw;
 }
+
+
+
+  .top:hover {
+    box-shadow: 1px 1px 0 0 #300f4b45, -1px -1px 0 0 #ffffff47;
+  }
+  
+  .top::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+        at 85% 40%,
+        hsla(240, 15%, 20%, 0.9) 0,
+        transparent 70%
+      ),
+      radial-gradient(at 50% 35%, rgba(20, 20, 26, 0.176) 0, transparent 70%),
+      radial-gradient(at 15% 30%, rgba(20, 20, 26, 0.389) 0, transparent 70%),
+      radial-gradient(at 5% 60%, rgba(118, 38, 247, 0.35) 0, transparent 70%),
+      radial-gradient(at 40% 90%, rgba(233, 173, 255, 0.451) 0, transparent 70%),
+      radial-gradient(at 95% 95%, rgba(255, 36, 233, 0.329) 0, transparent 70%),
+      radial-gradient(at 100% 20%, rgba(255, 68, 164, 0.329) 0, transparent 70%);
+    opacity: 0; 
+    transition: opacity 2s ease;
+    border-radius: inherit; 
+  }
+  
+  .top:hover::before {
+    opacity: 1; 
+  }
+
+  .top::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+        at 88% 40%,
+        hsla(240, 15%, 9%, 1) 0px,
+        transparent 85%
+      ),
+      radial-gradient(at 49% 30%, rgba(94, 94, 106, 0.424) 0px, transparent 85%),
+      radial-gradient(at 14% 26%, rgba(81, 81, 107, 0.506) 0px, transparent 85%),
+      radial-gradient(at 0% 64%, rgba(16, 61, 243, 0.203) 0px, transparent 85%),
+      radial-gradient(at 41% 94%, rgba(173, 177, 255, 0.279) 0px, transparent 85%),
+      radial-gradient(at 100% 99%, rgba(91, 36, 255, 0.15) 0px, transparent 85%);
+    opacity: 1; 
+    transition: opacity 2s ease;
+    border-radius: inherit; 
+  }
+  
+  .card:hover::after {
+    opacity: 0; 
+  }
 
 .about-section {
     color: #fff;
@@ -52,7 +123,6 @@ header {
 
 h1 {
     color: #fff;
-    padding-left: .5rem;
     font-weight: 100;
     margin: 0%;
     letter-spacing: 0.1rem;
@@ -60,7 +130,7 @@ h1 {
 
 .abt {
     color: #fff;
-    margin-right: .9rem;
+    
     cursor: pointer;
 }
 
@@ -460,9 +530,19 @@ input::placeholder {
   }
   
 
-  #info {
+  /* #info {
     color: #fff;
-  }
+    background: #b6a9ff42;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.382);
+    z-index: 500;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+  } */
 
  .city-label {
     padding-inline: .5rem;

@@ -15,6 +15,9 @@ document.body.appendChild(renderer.domElement);
 const textureLoader = new THREE.TextureLoader();
 const sphereTexture = textureLoader.load('map10.gif');
 
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
 const geometry = new THREE.SphereGeometry(2.5, 32, 32);
 const material = new THREE.MeshPhongMaterial({ map: sphereTexture });
 const sphere = new THREE.Mesh(geometry, material);
@@ -36,21 +39,54 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.25;
 
 let earthRotationSpeed = 0.001;
+const normalRotationSpeed = 0.001;
+const slowRotationSpeed = 0.00005;
+let currentRotationSpeed = normalRotationSpeed;
+const speedLerpFactor = 0.007;
+
 
 document.getElementById('earthSpeedSlider').addEventListener('input', function(e) {
     earthRotationSpeed = parseFloat(e.target.value);
 });
 
+let isHovering = false; 
+
+// function animate() {
+//     requestAnimationFrame(animate);
+
+//     if (isHovering) {
+//         sphere.rotation.y += 0.00005; 
+//     } else {
+//         sphere.rotation.y += earthRotationSpeed; 
+//     }
+
+
+//     controls.update();
+//     renderer.render(scene, camera);
+
+//     updateInfoboxPositions(); 
+// }
+
 function animate() {
     requestAnimationFrame(animate);
 
-    sphere.rotation.y += earthRotationSpeed;
+    // Determine the target rotation speed based on hover state
+    const targetSpeed = isHovering ? slowRotationSpeed : earthRotationSpeed;
+
+    // Interpolate current rotation speed towards target speed
+    currentRotationSpeed += (targetSpeed - currentRotationSpeed) * speedLerpFactor;
+
+    // Apply the interpolated rotation speed
+    sphere.rotation.y += currentRotationSpeed;
 
     controls.update();
     renderer.render(scene, camera);
+    updateInfoboxPositions(); 
 }
 
+
 animate();
+
 
 
 
@@ -153,49 +189,19 @@ function displayLocationOnGlobe(lat, lon, cityName) {
         mesh.scale.multiplyScalar(0.03); 
     }
 
-    
+    mesh.userData.name = cityName;
+
+    const infobox = document.createElement('div');
+    infobox.className = 'infobox';
+    infobox.id = `info-${cityName}`;
+    infobox.innerText = cityName;
+    infobox.style.position = 'absolute';
+    infobox.style.display = 'none'; // Initially hidden
+    document.body.appendChild(infobox);
 
     sphere.add(mesh); 
     cityMarkers.push(mesh);
 }
-
-// Assuming you have a scene, camera, and renderer already set up
-
-// 1. Load a font
-const loader = new THREE.FontLoader();
-loader.load('path/to/your/font.json', function(font) {
-    // 2. Create text geometry
-    const textGeometry = new THREE.TextGeometry('City Name', {
-        font: font,
-        size: 0.2, // Font size
-        height: 0.05, // Thickness of the text
-    });
-
-    // 3. Create mesh with text geometry
-    const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff }); // Change color as needed
-    const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-
-    // Position your textMesh based on your marker's location
-    // This is a simplified positioning example
-    const phi = (90 - lat) * (Math.PI / 180);  
-    const theta = (lon + 180) * (Math.PI / 180);
-    const radius = 2.6; // Slightly above the sphere surface
-
-    textMesh.position.x = -(radius * Math.sin(phi) * Math.cos(theta));
-    textMesh.position.y = radius * Math.cos(phi);
-    textMesh.position.z = radius * Math.sin(phi) * Math.sin(theta);
-
-    // Rotate the text to face the camera or adjust as needed
-    textMesh.lookAt(camera.position);
-
-    // Add the text mesh to the scene
-    scene.add(textMesh);
-});
-
-
-
-
-
 
 
 function redrawMarkers() {
@@ -212,4 +218,79 @@ document.querySelector('.checkbox').addEventListener('change', redrawMarkers);
 
 
 
+document.addEventListener('mousemove', function(event) {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObject(sphere);
+
+    // If the mouse intersects the Earth sphere, set isHovering to true, else false
+    isHovering = intersects.length > 0;
+});
+
+
+function updateInfoboxPositions() {
+    cityMarkers.forEach(marker => {
+        const vector = new THREE.Vector3();
+        marker.getWorldPosition(vector);
+        vector.project(camera);
+
+        const x = (0.5 + vector.x / 2) * window.innerWidth;
+        const y = (0.5 - vector.y / 2) * window.innerHeight;
+
+        const infobox = document.getElementById(`info-${marker.userData.name}`);
+        if (infobox) {
+            infobox.style.left = `${x}px`;
+            infobox.style.top = `${y}px`;
+        }
+    });
+}
+
+document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+function onDocumentMouseMove(event) {
+    // event.preventDefault();
+
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(sphere.children);
+
+    cityMarkers.forEach(marker => {
+        const infobox = document.getElementById(`info-${marker.userData.name}`);
+        if (infobox) {
+            infobox.style.display = 'none'; 
+        }
+    });
+
+    if (intersects.length > 0) {
+        const intersected = intersects[0].object.userData.name;
+        const infobox = document.getElementById(`info-${intersected}`);
+        if (infobox) {
+            infobox.style.display = 'block'; 
+            updateInfoboxPositions(); 
+        }
+    }
+}
+
+const style = document.createElement('style');
+style.innerHTML = `
+  .infobox {
+    // background-color: rgba(192, 195, 255, 0.2);
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    display: none;
+    position: absolute;
+    transform: translate(5%, 5%);
+    pointer-events: none;
+    z-index: 100;
+    // backdrop-filter: blur(5px);
+    // -webkit-backdrop-filter: blur(5px);
+    // border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+`;
+document.head.appendChild(style);
