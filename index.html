@@ -9,21 +9,20 @@
 </head>
 <body>
     <div id="threejs-container"></div>
-
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://threejs.org/build/three.module.js",
-            "three/examples/jsm/controls/OrbitControls": "https://threejs.org/examples/jsm/controls/OrbitControls.js",
-            "three/examples/jsm/renderers/CSS2DRenderer": "https://unpkg.com/three/examples/jsm/renderers/CSS2DRenderer.js"
-        }
-    }
-    </script>
     
     <div class="top">
-        <h1>spinny.earth</h1>
-        <p class="abt">about</p>
+        <img class="title" src="spinny.gif"> 
     </div>
+
+    <p class="abt">about</p>
+<div class="abt-sct">
+    <p class="details">spinny.earth is a portfolio project and work in progress by kim c. zeuner. <br><br>  feel free to add your city to the planet, click on the city markers, and play around with the settings!</p>
+</div>
+
+   
+        
+      
+    
     
     <canvas id="star-canvas"></canvas>
 
@@ -64,9 +63,18 @@
     </div>
 
 
-    
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://threejs.org/build/three.module.js",
+                "three/examples/jsm/controls/OrbitControls": "https://threejs.org/examples/jsm/controls/OrbitControls.js",
+                "three/examples/jsm/renderers/CSS2DRenderer": "https://unpkg.com/three/examples/jsm/renderers/CSS2DRenderer.js"
+            }
+        }
+        </script>
 
     <script src="stars.js"></script>
+    <script src="about.js"></script>
     <script type="module" src="script.js"></script>
    
     

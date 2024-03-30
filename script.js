@@ -36,14 +36,15 @@ camera.position.z = 5;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.25;
+controls.dampingFactor = 0.05;
+controls.minDistance = 3; 
+controls.enablePan = true; 
 
 let earthRotationSpeed = 0.001;
-const normalRotationSpeed = 0.001;
-const slowRotationSpeed = 0.00005;
-let currentRotationSpeed = normalRotationSpeed;
-const speedLerpFactor = 0.007;
 
+const slowRotationSpeed = 0.00005;
+let currentRotationSpeed = earthRotationSpeed;
+const speedLerpFactor = 0.007;
 
 document.getElementById('earthSpeedSlider').addEventListener('input', function(e) {
     earthRotationSpeed = parseFloat(e.target.value);
@@ -51,26 +52,10 @@ document.getElementById('earthSpeedSlider').addEventListener('input', function(e
 
 let isHovering = false; 
 
-// function animate() {
-//     requestAnimationFrame(animate);
-
-//     if (isHovering) {
-//         sphere.rotation.y += 0.00005; 
-//     } else {
-//         sphere.rotation.y += earthRotationSpeed; 
-//     }
-
-
-//     controls.update();
-//     renderer.render(scene, camera);
-
-//     updateInfoboxPositions(); 
-// }
 
 function animate() {
     requestAnimationFrame(animate);
 
-    // Determine the target rotation speed based on hover state
     const targetSpeed = isHovering ? slowRotationSpeed : earthRotationSpeed;
 
     // Interpolate current rotation speed towards target speed
@@ -111,9 +96,6 @@ async function getCityCoordinates(cityName) {
         console.error('Error fetching coordinates:', error);
     }
 }
-
-
-
 
 
 document.querySelector('.plus').addEventListener('click', function() {
@@ -225,8 +207,6 @@ document.addEventListener('mousemove', function(event) {
     raycaster.setFromCamera(mouse, camera);
 
     const intersects = raycaster.intersectObject(sphere);
-
-    // If the mouse intersects the Earth sphere, set isHovering to true, else false
     isHovering = intersects.length > 0;
 });
 
@@ -251,7 +231,6 @@ function updateInfoboxPositions() {
 document.addEventListener('mousemove', onDocumentMouseMove, false);
 
 function onDocumentMouseMove(event) {
-    // event.preventDefault();
 
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
@@ -279,18 +258,14 @@ function onDocumentMouseMove(event) {
 const style = document.createElement('style');
 style.innerHTML = `
   .infobox {
-    // background-color: rgba(192, 195, 255, 0.2);
     color: white;
     padding: 8px;
     border-radius: 4px;
     display: none;
     position: absolute;
-    transform: translate(5%, 5%);
+    transform: translate(5%, -25%);
     pointer-events: none;
     z-index: 100;
-    // backdrop-filter: blur(5px);
-    // -webkit-backdrop-filter: blur(5px);
-    // border: 1px solid rgba(255, 255, 255, 0.3);
   }
 `;
 document.head.appendChild(style);

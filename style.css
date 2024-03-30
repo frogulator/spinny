@@ -2,9 +2,14 @@
     font-family: OpenSauce;
     src: url(OpenSauceSans-Light.ttf);
 }
+@font-face {
+    font-family: Bauhaus;
+    src: url(SpaceMono-Regular.ttf);
+}
 
 * {
     font-family: OpenSauce;
+    box-sizing: border-box;
 }
 
 :root {
@@ -18,23 +23,10 @@ body {
     background-color: #02000e;
 }
 
-
-
-/* .top {
-    position: absolute;
-    top: 1vw;
-    left: 1vw;
-    right: 1vw;
-    width: 98vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: #ffffff32 1px solid;
-    border-radius: 5px;
-    background-color: #7137aa;
-    backdrop-filter: blur(3px);
-} */
-
+.title {
+    width: 30%;
+    /* filter: blur(1px); */
+}
 
 .top {
     position: absolute;
@@ -42,16 +34,60 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .5vw 2vw;
+    padding: 1vw 2vw;
+}
+
+.abt {
+    margin: 0%;
+    color: #fff;
+    cursor: pointer;
+    padding: 1rem;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: ; */
+    overflow: hidden;
+    z-index: 3;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    max-width: 30%;
+    overflow: hidden;
+}
+
+.abt-sct {
+    border-radius: 10px;
+    visibility: hidden; 
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease; 
+    position: absolute; 
+    right: 1rem;
+    top: 5rem; 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #fff;
+    max-width: 30%;
+}
+
+.abt-sct.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    padding: 1rem;
 }
 
 
-
-  .top:hover {
+.abt:hover, .abt-sct:hover {
     box-shadow: 1px 1px 0 0 #300f4b45, -1px -1px 0 0 #ffffff47;
   }
+
   
-  .top::before {
+  
+  .abt::before,  .abt-sct::before {
     z-index: -1;
     content: "";
     position: absolute;
@@ -75,11 +111,11 @@ body {
     border-radius: inherit; 
   }
   
-  .top:hover::before {
+  .abt:hover::before, .abt-sct:hover::before {
     opacity: 1; 
   }
 
-  .top::after {
+  .abt::after,  .abt-sct::after {
     z-index: -1;
     content: "";
     position: absolute;
@@ -102,37 +138,17 @@ body {
     border-radius: inherit; 
   }
   
-  .card:hover::after {
+  .abt:hover::after,  .abt-stc:hover::after  {
     opacity: 0; 
   }
 
-.about-section {
-    color: #fff;
-    width: 30%;
-    font-size: 1rem;
-    padding: 1rem;
-    background: #02000ecd;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-left: 1px solid rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(255, 255, 255);
-    z-index: 200;
-    display: none;
-}
+  .details {
+    font-family: Bauhaus;
+    font-size: .9rem;
+  }
+  
 
-h1 {
-    color: #fff;
-    font-weight: 100;
-    margin: 0%;
-    letter-spacing: 0.1rem;
-}
 
-.abt {
-    color: #fff;
-    
-    cursor: pointer;
-}
 
 .city-card {
     display: flex;
