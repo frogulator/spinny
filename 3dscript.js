@@ -242,6 +242,38 @@ function onDocumentMouseMove(event) {
     }
 }
 
+
+function onDocumentTouchMove(event) {
+    if (event.touches.length > 0) {
+        mouse.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
+        mouse.y = - (event.touches[0].clientY / window.innerHeight) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+
+        const intersects = raycaster.intersectObjects(sphere.children);
+
+        cityMarkers.forEach(marker => {
+            const infobox = document.getElementById(`info-${marker.userData.name}`);
+            if (infobox) {
+                infobox.style.display = 'none';
+            }
+        });
+
+        if (intersects.length > 0) {
+            const intersected = intersects[0].object.userData.name;
+            const infobox = document.getElementById(`info-${intersected}`);
+            if (infobox) {
+                infobox.style.display = 'block';
+                updateInfoboxPositions();
+            }
+        }
+    }
+}
+
+function onDocumentTouchStart(event) {
+    onDocumentTouchMove(event); 
+}
+
+
 const style = document.createElement('style');
 style.innerHTML = `
   .infobox {
