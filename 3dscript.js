@@ -92,22 +92,27 @@ async function getCityCoordinates(cityName) {
         console.error('Error fetching coordinates:', error);
     }
 }
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 
 document.querySelector('.plus').addEventListener('click', function() {
-    
     const cityName = document.getElementById('inputValue').value;
+    const formattedCityName = capitalizeFirstLetter(cityName);
     
-    
-    getCityCoordinates(cityName);
+    getCityCoordinates(formattedCityName);
 });
 
 document.getElementById('inputValue').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         const cityName = document.getElementById('inputValue').value;
-        getCityCoordinates(cityName);
+        const formattedCityName = capitalizeFirstLetter(cityName);
+        
+        getCityCoordinates(formattedCityName);
     }
 });
+
 
 
 function createHeartShape() {
