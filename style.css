@@ -29,7 +29,7 @@ body {
 }
 
 .title:hover {
- filter: contrast(170%) saturate(110%); 
+ filter: contrast(200%) saturate(110%); 
  cursor: se-resize;
 }
 
@@ -391,7 +391,7 @@ input::placeholder {
   }
   
   .card:hover::before {
-    opacity: 1; /* Fade in the pseudo-element on hover */
+    opacity: 1; 
   }
 
   .card::after {
