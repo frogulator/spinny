@@ -30,6 +30,16 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+document.querySelectorAll('input[type="text"]').forEach(input => {
+    input.addEventListener('focus', function() {
+        if (window.innerWidth <= 768) { 
+            input.blur();
+        }
+    });
+});
+
+
+
 
 
 

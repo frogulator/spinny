@@ -38,7 +38,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.minDistance = 3; 
-controls.enablePan = true; 
+
 
 let earthRotationSpeed = 0.001;
 
