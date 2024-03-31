@@ -13,7 +13,7 @@ renderer.shadowMap.enabled = true;
 document.body.appendChild(renderer.domElement);
 
 const textureLoader = new THREE.TextureLoader();
-const sphereTexture = textureLoader.load('map10.gif');
+const sphereTexture = textureLoader.load('assets/map10.gif');
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();

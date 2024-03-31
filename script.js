@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
         var isVisible = adjustments.style.display === 'block';
         adjustments.style.display = isVisible ? 'none' : 'block';
         if (isVisible) {
-            toggleButton.innerHTML = 'open adjustments <img src="arrow.svg">';
+            toggleButton.innerHTML = 'open adjustments <img src="assets/arrow.svg">';
         } else {
-            toggleButton.innerHTML = 'close adjustments <img src="arrow.svg" class="rotate">';
+            toggleButton.innerHTML = 'close adjustments <img src="assets/arrow.svg" class="rotate">';
         }
     });
 });
