@@ -19,10 +19,14 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 const geometry = new THREE.SphereGeometry(2.5, 32, 32);
+
 const material = new THREE.MeshPhongMaterial({ map: sphereTexture });
 const sphere = new THREE.Mesh(geometry, material);
 sphere.castShadow = true;
 scene.add(sphere);
+if (window.innerWidth <= 768) { 
+    sphere.scale.set(0.6, 0.6, 0.6); 
+}
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
