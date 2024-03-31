@@ -24,9 +24,7 @@ const material = new THREE.MeshPhongMaterial({ map: sphereTexture });
 const sphere = new THREE.Mesh(geometry, material);
 sphere.castShadow = true;
 scene.add(sphere);
-if (window.innerWidth <= 768) { 
-    sphere.scale.set(0.6, 0.6, 0.6); 
-}
+
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
@@ -42,6 +40,11 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.minDistance = 3; 
+
+if (window.innerWidth <= 768) { 
+    sphere.scale.set(0.8, 0.8, 0.8);
+    controls.minDistance = 2;  
+}
 
 
 let earthRotationSpeed = 0.001;
