@@ -24,8 +24,13 @@ body {
 }
 
 .title {
-    width: 30%;
-    /* filter: blur(1px); */
+    width: 30%;  
+    transition: filter 0.5s ease;
+}
+
+.title:hover {
+ filter: contrast(170%) saturate(110%); 
+ cursor: se-resize;
 }
 
 .top {
@@ -42,10 +47,6 @@ body {
     color: #fff;
     cursor: pointer;
     padding: 1rem;
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: ; */
     overflow: hidden;
     z-index: 3;
     position: absolute;
@@ -420,11 +421,11 @@ input::placeholder {
     opacity: 0; 
   }
 
-  .box {
+  .location-marker-box {
    color: #fff;
   }
 
-  .box label {
+  .location-marker-box label {
     font-size: .8rem;
   }
 
@@ -544,21 +545,6 @@ input::placeholder {
     background-color: #ffd00017; 
     box-shadow: inset 0 0 0 1px #ebd19d85;
   }
-  
-
-  /* #info {
-    color: #fff;
-    background: #b6a9ff42;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.382);
-    z-index: 500;
-    padding: 1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-  } */
 
  .city-label {
     padding-inline: .5rem;
@@ -580,6 +566,85 @@ input::placeholder {
     color: #ffffff;
 
     }
+
+    #toggleAdjustments {
+        display: none; /* Hide by default */
+    }
+
+
+    @media only screen and (max-width: 768px) {
+
+        .abt {
+            font-size: .7rem;
+            top: .5rem;
+            right: .5rem;
+            padding: .7rem;
+            border-radius: 6px;
+        }
+
+        .abt-sct {
+            border-radius: 6px;
+            right: .5rem;
+            top: 3rem; 
+            max-width: 65%;
+        }
+        
+        .abt-sct.visible {
+            padding: .7rem;
+        }
+
+        .details {
+            font-size: .7rem;
+        }
+
+        .card {
+            max-width: calc(100% - 2rem);
+        }
+
+
+
+        #toggleAdjustments {
+            display: flex; 
+            line-height: 0.8;
+            font-weight: 100;
+            text-align: start;
+            font-size: .9rem;
+            color: #ffffff;
+            margin-block: .3rem;
+            background-color: transparent;
+            border: none;
+            align-items: center;
+            justify-content: space-between;
+            
+        }
+
+       
+
+        #toggleAdjustments img {
+            width: 5%;
+        }
+
+        .card-title {
+            display: none;
+        }
+
+        .adjustments {
+            display: none;
+            
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+
+
+
+
+
+    }
+
     
 
 

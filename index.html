@@ -7,6 +7,7 @@
     <title>Spinny Earth</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
 <body>
     <div id="threejs-container"></div>
     
@@ -15,20 +16,11 @@
     </div>
 
     <p class="abt">about</p>
-<div class="abt-sct">
-    <p class="details">spinny.earth is a portfolio project and work in progress by kim c. zeuner. <br><br>  feel free to add your city to the planet, click on the city markers, and play around with the settings!</p>
-</div>
+    <div class="abt-sct">
+        <p class="details">spinny.earth is a portfolio project and work in progress by kim c. zeuner. <br><br>  feel free to add your city to the planet, click on the city markers, and play around with the settings!</p>
+    </div>
 
-   
-        
-      
-    
-    
     <canvas id="star-canvas"></canvas>
-
- 
-        
-        <!-- <div class="about-section">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div> -->
 
     <div id="info"></div>
 
@@ -38,6 +30,10 @@
             <button class="plus" type="button">+</button>
         </div>
         <p class="card-title">adjustments</p>
+        <button id="toggleAdjustments" type="button">
+            open adjustments <img src="arrow.svg">
+        </button>
+
         <div class="adjustments">
             <label class="speed" for="speedSlider">twinkle factor</label>
             <input id="speedSlider"
@@ -45,12 +41,16 @@
                   min="0.1"
                   max="8"
                   step="0.005"
-                  value="1.5"
-              />
+                  value="1.5">
             <label class="speed" for="earthSpeedSlider">earth speed</label>
-            <input id="earthSpeedSlider" type="range" min="0" max="0.1" step="0.001" value="0.005">
-        </div>
-        <div class="box">
+            <input id="earthSpeedSlider" 
+            type="range" 
+            min="0" 
+            max="0.1" 
+            step="0.001" 
+            value="0.005">
+        
+        <div class="location-marker-box">
             <label>toggle location marker</label>
             <div class="toggle-button-cover">
                 <div id="button-3" class="button r">
@@ -59,7 +59,7 @@
                   <div class="layer"></div>
                 </div>
         </div>
-        
+    </div>
     </div>
 
 
@@ -71,13 +71,9 @@
                 "three/examples/jsm/renderers/CSS2DRenderer": "https://unpkg.com/three/examples/jsm/renderers/CSS2DRenderer.js"
             }
         }
-        </script>
-
+    </script>
     <script src="stars.js"></script>
-    <script src="about.js"></script>
-    <script type="module" src="script.js"></script>
-   
-    
-
+    <script src="script.js"></script>
+    <script type="module" src="3dscript.js"></script>
 </body>
 </html>
