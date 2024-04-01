@@ -41,10 +41,10 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.minDistance = 3; 
 
-if (window.innerWidth <= 768) { 
-    sphere.scale.set(0.8, 0.8, 0.8);
-    controls.minDistance = 2;  
-}
+// if (window.innerWidth <= 768) { 
+//     sphere.scale.set(0.8, 0.8, 0.8);
+//     controls.minDistance = 2;  
+// }
 
 
 let earthRotationSpeed = 0.001;
