@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var adjustments = document.querySelector('.adjustments');
 
     toggleButton.addEventListener('click', function() {
-        var isVisible = adjustments.style.display === 'block';
-        adjustments.style.display = isVisible ? 'none' : 'block';
+        var isVisible = adjustments.style.display === 'flex';
+        adjustments.style.display = isVisible ? 'none' : 'flex';
         if (isVisible) {
             toggleButton.innerHTML = 'open adjustments <img src="assets/arrow.svg">';
         } else {
