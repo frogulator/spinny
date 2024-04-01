@@ -120,8 +120,6 @@ document.getElementById('inputValue').addEventListener('keydown', function(event
     }
 });
 
-
-
 function createHeartShape() {
     const shape = new THREE.Shape();
     const x = -0.06, y = -0.06;
@@ -322,5 +320,59 @@ function resetGlobeAndMarkers() {
 
     renderer.render(scene, camera);
 }
+
+
+
+
+
+// // Function to update cursor style based on interaction
+// function updateCursorStyle(cursorStyle) {
+//     document.body.style.cursor = cursorStyle;
+// }
+
+// // Consolidated mouse move handler for detecting hover states and updating cursor
+// function onDocumentMouseMove(event) {
+//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+//     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+//     raycaster.setFromCamera(mouse, camera);
+
+//     // Check for intersections with both sphere and city markers
+//     const intersects = raycaster.intersectObjects([sphere, ...cityMarkers], true);
+
+//     // Update cursor based on hover state
+//     updateCursorStyle(intersects.length > 0 ? 'pointer' : 'default');
+
+//     // Handle displaying city marker info boxes
+//     cityMarkers.forEach(marker => {
+//         const infobox = document.getElementById(`info-${marker.userData.name}`);
+//         if (infobox) infobox.style.display = 'none';
+//     });
+
+//     if (intersects.length > 0) {
+//         const intersectedObject = intersects[0].object;
+//         // Check if the intersected object is a city marker to display its infobox
+//         if (intersectedObject.userData && intersectedObject.userData.name) {
+//             const infobox = document.getElementById(`info-${intersectedObject.userData.name}`);
+//             if (infobox) {
+//                 infobox.style.display = 'block';
+//                 updateInfoboxPositions();
+//             }
+//         }
+//     }
+// }
+
+// canvas.addEventListener('mousedown', (event) => {
+//     // Re-use the raycasting logic from mousemove
+//     const intersects = raycaster.intersectObjects([sphere, ...cityMarkers], true);
+//     updateCursorStyle(intersects.length > 0 ? 'grabbing' : document.body.style.cursor);
+// });
+
+// document.addEventListener('mouseup', () => {
+//     // The cursor will be updated based on the current hover state in the next mousemove event
+// });
+
+// // Attach the mouse move handler
+// document.addEventListener('mousemove', onDocumentMouseMove, false);
+
 
 
