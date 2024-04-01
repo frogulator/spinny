@@ -42,9 +42,8 @@ controls.dampingFactor = 0.05;
 controls.minDistance = 3; 
 controls.maxPolarAngle = Math.PI / 1.5; 
 controls.minPolarAngle = 0.7; 
+controls.enablePan = false;
 
-camera.position.set(0, 4, 0); 
-camera.lookAt(scene.position);
 
 if (window.innerWidth <= 768) { 
     sphere.scale.set(0.8, 0.8, 0.8);
