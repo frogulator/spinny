@@ -40,11 +40,16 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.minDistance = 3; 
+controls.maxPolarAngle = Math.PI / 1.5; 
+controls.minPolarAngle = 0.7; 
 
-// if (window.innerWidth <= 768) { 
-//     sphere.scale.set(0.8, 0.8, 0.8);
-//     controls.minDistance = 2;  
-// }
+camera.position.set(0, 4, 0); 
+camera.lookAt(scene.position);
+
+if (window.innerWidth <= 768) { 
+    sphere.scale.set(0.8, 0.8, 0.8);
+    controls.minDistance = 2;  
+}
 
 
 let earthRotationSpeed = 0.001;
@@ -300,3 +305,20 @@ style.innerHTML = `
   }
 `;
 document.head.appendChild(style);
+
+document.querySelector('.reset').addEventListener('click', resetGlobeAndMarkers);
+
+function resetGlobeAndMarkers() {
+    cityMarkers.forEach(marker => {
+        sphere.remove(marker);
+    });
+    cityMarkers = []; 
+    citiesData = [];
+
+    earthRotationSpeed = 0.001; 
+    document.getElementById('earthSpeedSlider').value = earthRotationSpeed; 
+
+    renderer.render(scene, camera);
+}
+
+

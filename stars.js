@@ -1,7 +1,7 @@
 const canvas = document.getElementById('star-canvas');
 const ctx = canvas.getContext('2d');
 const stars = [];
-const numberOfStars = 500;
+const numberOfStars = 1000;
 
 let twinkleFactor = 1.5; 
 
@@ -64,3 +64,12 @@ window.addEventListener('resize', () => {
 });
 
 animate();
+
+function resetStarCanvasAndTwinkleFactor() {
+   
+    twinkleFactor = 1.5;
+
+    document.getElementById('speedSlider').value = twinkleFactor; 
+}
+document.querySelector('.reset').addEventListener('click', resetStarCanvasAndTwinkleFactor);
+
