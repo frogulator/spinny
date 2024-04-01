@@ -46,10 +46,10 @@ controls.enablePan = false;
 
 
 if (window.innerWidth <= 768) { 
-    sphere.scale.set(0.8, 0.8, 0.8);
-    controls.minDistance = 2;  
+    sphere.scale.set(0.5, 0.5, 0.5);
+    controls.minDistance = 2; 
+    sphere.position.set(0,0,0);
 }
-
 
 let earthRotationSpeed = 0.001;
 
@@ -164,8 +164,11 @@ function displayLocationOnGlobe(lat, lon, cityName) {
 
     const shape = isStar ? createStarShape() : createHeartShape();
     const geometry = new THREE.ShapeGeometry(shape);
-    const material = new THREE.MeshBasicMaterial({ color: isStar ? 0xffff00 : 0xff3333 }); // Yellow for stars, red for hearts
+    const material = new THREE.MeshBasicMaterial({ color: isStar ? 0xffff00 : 0xff3333 }); 
+    
+
     const mesh = new THREE.Mesh(geometry, material);
+    
 
     mesh.userData = { cityName }; 
     mesh.position.set(globeX, globeY, globeZ);
@@ -185,7 +188,7 @@ function displayLocationOnGlobe(lat, lon, cityName) {
     infobox.id = `info-${cityName}`;
     infobox.innerText = cityName;
     infobox.style.position = 'absolute';
-    infobox.style.display = 'none'; // Initially hidden
+    infobox.style.display = 'none'; 
     document.body.appendChild(infobox);
 
     sphere.add(mesh); 
