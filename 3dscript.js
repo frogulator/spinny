@@ -44,7 +44,7 @@ controls.enablePan = false;
 
 
 if (window.innerWidth <= 768) { 
-    sphere.scale.set(0.9, 0.9, 0.9);
+    sphere.scale.set(0.75, 0.75, 0.75);
     controls.minDistance = 2; 
     sphere.position.set(0,0,0);
 }
