@@ -44,7 +44,7 @@ controls.enablePan = false;
 
 
 if (window.innerWidth <= 768) { 
-    sphere.scale.set(0.5, 0.5, 0.5);
+    sphere.scale.set(0.8, 0.8, 0.8);
     controls.minDistance = 2; 
     sphere.position.set(0,0,0);
 }
@@ -170,11 +170,15 @@ function displayLocationOnGlobe(lat, lon, cityName) {
     mesh.position.set(globeX, globeY, globeZ);
     mesh.lookAt(new THREE.Vector3(globeX * 2, globeY * 2, globeZ * 2));
 
+    function isMobileDevice() {
+        return ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0);
+    }
+    
     if (!isStar) {
         mesh.rotateZ(Math.PI); 
-        mesh.scale.multiplyScalar(0.3); 
+        mesh.scale.multiplyScalar(isMobileDevice() ? 0.35 : 0.3); 
     } else {
-        mesh.scale.multiplyScalar(0.03); 
+        mesh.scale.multiplyScalar(isMobileDevice() ? 0.035 : 0.03); 
     }
 
     mesh.userData.name = cityName;
