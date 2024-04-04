@@ -44,7 +44,7 @@ controls.enablePan = false;
 
 
 if (window.innerWidth <= 768) { 
-    sphere.scale.set(1, 1, 1);
+    sphere.scale.set(0.9, 0.9, 0.9);
     controls.minDistance = 2; 
     sphere.position.set(0,0,0);
 }
@@ -176,9 +176,9 @@ function displayLocationOnGlobe(lat, lon, cityName) {
     
     if (!isStar) {
         mesh.rotateZ(Math.PI); 
-        mesh.scale.multiplyScalar(isMobileDevice() ? 0.35 : 0.3); 
+        mesh.scale.multiplyScalar(isMobileDevice() ? 0.45 : 0.3); 
     } else {
-        mesh.scale.multiplyScalar(isMobileDevice() ? 0.035 : 0.03); 
+        mesh.scale.multiplyScalar(isMobileDevice() ? 0.045 : 0.03); 
     }
 
     mesh.userData.name = cityName;
