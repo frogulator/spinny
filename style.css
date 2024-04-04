@@ -74,6 +74,11 @@ body {
     max-width: 30%;
 }
 
+a {
+color: white;
+font-family: monospace;
+}
+
 .abt-sct.visible {
     visibility: visible;
     opacity: 1;
